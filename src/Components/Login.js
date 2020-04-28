@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-// import { connect } from "react-redux";
-// import { login } from "../store/actions";
-// import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { login } from "../store/actions";
 
 import "../App.css";
 import bus from "../images/bus.png";
@@ -23,7 +22,7 @@ class Login extends Component {
 
   render() {
     const { username, password } = this.state;
-    // if (this.props.user) return <Redirect to="/" />;
+    if (this.props.user) return <Redirect to="/" />;
     return (
       <div>
         <div className="container mt-5">
@@ -65,7 +64,7 @@ class Login extends Component {
                       to="/signup"
                       className="btn btn-link my-2 my-sm-0"
                     >
-                      Signup for an account
+                      Signup for new account
                     </Link>
                   </form>
                 </div>
@@ -73,7 +72,7 @@ class Login extends Component {
             </div>
           </div>
           <div className="box">
-            <img className="image" src={bus} alt="" />
+            <img className="image" src={bus} alt="school" />
           </div>
         </div>
       </div>
@@ -81,4 +80,11 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = ({ user }) => ({
+  user,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  login: (userData) => dispatch(login(userData)),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
