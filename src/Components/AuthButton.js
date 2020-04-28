@@ -4,6 +4,10 @@ import { connect } from "react-redux";
 import { logout } from "../store/actions";
 
 const AuthButton = ({ user, logout }) => {
+  // You can use the following syntax:
+  // const buttons = user ? <>...</> : <li>...</li>
+  // or not define it in a constant, just return it directly
+  // Same comment applies to your other repo's AuthButton.
   let buttons = [
     <li key="loginButton" className="nav-item font-weight-bold">
       <Link
