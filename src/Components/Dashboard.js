@@ -16,7 +16,6 @@ class Dashboard extends Component {
           </div>
           <div className="content col-10">
             <div className="schools">
-              <h3>Schools</h3>
               <div className="row">{schoolCards}</div>
             </div>
           </div>

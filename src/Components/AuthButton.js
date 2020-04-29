@@ -6,9 +6,11 @@ import { logout } from "../store/actions";
 const AuthButton = ({ user, logout }) => {
   return user ? (
     <>
-      <span style={{ color: "ffea32" }} className="nav-link shadow">
-        {user.username}
-      </span>
+      <li className="nav-item">
+        <span style={{ color: "#ffc107" }} className="nav-link">
+          {user.username}
+        </span>
+      </li>
       <li className="nav-item">
         <span
           style={{ color: "#ffc107" }}

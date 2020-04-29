@@ -1,7 +1,7 @@
 import instance from "./instance";
 
 import { SET_CURRENT_USER } from "./actionTypes";
-
+import { fetchSchools } from "./erkab";
 import { setErrors } from "./errors";
 import decode from "jwt-decode";
 
@@ -13,6 +13,7 @@ export const checkForExpiredToken = () => (dispatch) => {
     const user = decode(token);
     if (user.exp >= currentTimeInSeconds) {
       dispatch(setCurrentUser(token));
+      dispatch(fetchSchools());
     }
   } else {
     dispatch(setCurrentUser());
@@ -25,15 +26,7 @@ export const login = (userData) => async (dispatch) => {
     console.log(res, "res");
     const { access } = res.data;
     dispatch(setCurrentUser(access));
-  } catch (error) {
-    dispatch(setErrors(error));
-  }
-};
-export const signup = (userData) => async (dispatch) => {
-  try {
-    const res = await instance.post("/register/", userData);
-    const { access } = res.data;
-    dispatch(setCurrentUser(access));
+    dispatch(fetchSchools());
   } catch (error) {
     dispatch(setErrors(error));
   }

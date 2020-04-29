@@ -4,7 +4,7 @@ import instance from "./instance";
 
 export const fetchSchools = () => async (dispatch) => {
   try {
-    const res = await instance.get("/schools/");
+    const res = await instance.get(`/schools/`);
     const schools = res.data;
     dispatch({
       type: GET_SCHOOL,
@@ -17,7 +17,7 @@ export const fetchSchools = () => async (dispatch) => {
 
 export const fetchBusses = (schoolID) => async (dispatch) => {
   try {
-    const res = await instance.get(`/schools/busses/${schoolID}/`);
+    const res = await instance.get(`/school/${schoolID}/busses/`);
     const busses = res.data;
     dispatch({
       type: GET_BUSSES,
