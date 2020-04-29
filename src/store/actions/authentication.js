@@ -29,6 +29,15 @@ export const login = (userData) => async (dispatch) => {
     dispatch(setErrors(error));
   }
 };
+export const signup = (userData) => async (dispatch) => {
+  try {
+    const res = await instance.post("/register/", userData);
+    const { access } = res.data;
+    dispatch(setCurrentUser(access));
+  } catch (error) {
+    dispatch(setErrors(error));
+  }
+};
 
 export const logout = () => setCurrentUser();
 

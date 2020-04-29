@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import "../App.css";
+import { connect } from "react-redux";
+import SchoolCard from "./SchoolCard";
 import Sidebar from "./Sidebar";
-import bus from "../images/bus.png";
-class Home extends Component {
+class Dashboard extends Component {
   render() {
+    const schoolCards = this.props.schools.map((school) => (
+      <SchoolCard key={school.name} school={school} />
+    ));
     return (
       <div id="app" className="container-fluid">
         <div className="row">
@@ -13,98 +17,7 @@ class Home extends Component {
           <div className="content col-10">
             <div className="schools">
               <h3>Schools</h3>
-              <div className="row">
-                <div className="col-lg-4 col-md-6 col-12">
-                  <div className="image">
-                    <img
-                      className="card-img-top img-fluid"
-                      src={bus}
-                      alt="school name"
-                    />
-                  </div>
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      <span>School Name</span>
-                    </h5>
-                    <small className="card-text">Location</small>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-6 col-12">
-                  <div className="image">
-                    <img
-                      className="card-img-top img-fluid"
-                      src={bus}
-                      alt="school name"
-                    />
-                  </div>
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      <span>School Name</span>
-                    </h5>
-                    <small className="card-text">Location</small>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-6 col-12">
-                  <div className="image">
-                    <img
-                      className="card-img-top img-fluid"
-                      src={bus}
-                      alt="school name"
-                    />
-                  </div>
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      <span>School Name</span>
-                    </h5>
-                    <small className="card-text">Location</small>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-6 col-12">
-                  <div className="image">
-                    <img
-                      className="card-img-top img-fluid"
-                      src={bus}
-                      alt="school name"
-                    />
-                  </div>
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      <span>School Name</span>
-                    </h5>
-                    <small className="card-text">Location</small>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-6 col-12">
-                  <div className="image">
-                    <img
-                      className="card-img-top img-fluid"
-                      src={bus}
-                      alt="school name"
-                    />
-                  </div>
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      <span>School Name</span>
-                    </h5>
-                    <small className="card-text">Location</small>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-6 col-12">
-                  <div className="image">
-                    <img
-                      className="card-img-top img-fluid"
-                      src={bus}
-                      alt="school name"
-                    />
-                  </div>
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      <span>School Name</span>
-                    </h5>
-                    <small className="card-text">Location</small>
-                  </div>
-                </div>
-              </div>
+              <div className="row">{schoolCards}</div>
             </div>
           </div>
         </div>
@@ -113,4 +26,9 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    schools: state.erkab.schools,
+  };
+};
+export default connect(mapStateToProps)(Dashboard);
