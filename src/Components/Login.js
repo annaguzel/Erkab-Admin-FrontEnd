@@ -59,13 +59,6 @@ class Login extends Component {
                     <button type="submit" className="btn btn-info">
                       Login
                     </button>
-                    <Link
-                      style={{ color: "#ffc107" }}
-                      to="/signup"
-                      className="btn btn-link my-2 my-sm-0"
-                    >
-                      Signup for new account
-                    </Link>
                   </form>
                 </div>
               </div>

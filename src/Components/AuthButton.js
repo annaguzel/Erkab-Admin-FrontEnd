@@ -4,7 +4,22 @@ import { connect } from "react-redux";
 import { logout } from "../store/actions";
 
 const AuthButton = ({ user, logout }) => {
-  let buttons = [
+  return user ? (
+    <>
+      <span style={{ color: "ffea32" }} className="nav-link shadow">
+        {user.username}
+      </span>
+      <li className="nav-item">
+        <span
+          style={{ color: "#ffc107" }}
+          className="nav-link"
+          onClick={logout}
+        >
+          Logout
+        </span>
+      </li>
+    </>
+  ) : (
     <li key="loginButton" className="nav-item font-weight-bold">
       <Link
         style={{ color: "#ffea32", fontSize: "1.2rem" }}
@@ -13,27 +28,8 @@ const AuthButton = ({ user, logout }) => {
       >
         Login
       </Link>
-    </li>,
-  ];
-  if (user) {
-    buttons = (
-      <>
-        <span style={{ color: "ffea32" }} className="nav-link shadow">
-          {user.username}
-        </span>
-        <li className="nav-item">
-          <span
-            style={{ color: "#ffc107" }}
-            className="nav-link"
-            onClick={logout}
-          >
-            Logout
-          </span>
-        </li>
-      </>
-    );
-  }
-  return <ul className="auth navbar-nav ml-auto">{buttons}</ul>;
+    </li>
+  );
 };
 
 const mapStateToProps = ({ user }) => ({
