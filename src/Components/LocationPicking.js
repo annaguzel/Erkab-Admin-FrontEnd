@@ -10,6 +10,10 @@ const defaultPosition = {
   lng: 35.930359,
 };
 
+/**
+ * same notes from the other repo review apply here
+ */
+
 class LocationPicking extends Component {
   constructor(props) {
     super(props);
