@@ -43,7 +43,7 @@ const setCurrentUser = (token) => {
 const setAuthToken = (token) => {
   if (token) {
     localStorage.setItem("token", token);
-    instance.defaults.headers.Authorization = `jwt ${token}`;
+    instance.defaults.headers.Authorization = `Bearer ${token}`;
   } else {
     delete instance.defaults.headers.Authorization;
     localStorage.removeItem("token");

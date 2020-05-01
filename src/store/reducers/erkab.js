@@ -1,4 +1,4 @@
-import { GET_SCHOOL, GET_BUSSES } from "../actions/actionTypes";
+import { GET_SCHOOL, GET_BUSSES, ADD_SCHOOL } from "../actions/actionTypes";
 
 const initialState = {
   schools: [],
@@ -17,7 +17,9 @@ const erkabReducer = (state = initialState, action) => {
         ...state,
         busses: action.payload,
       };
-
+    case ADD_SCHOOL:
+      const newSchool = action.payload;
+      return [newSchool, ...state];
     default:
       return state;
   }

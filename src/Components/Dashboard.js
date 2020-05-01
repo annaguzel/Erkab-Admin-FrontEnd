@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../App.css";
 import { connect } from "react-redux";
 import SchoolCard from "./SchoolCard";
+
 import Sidebar from "./Sidebar";
 class Dashboard extends Component {
   render() {
@@ -28,6 +29,7 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => {
   return {
     schools: state.erkab.schools,
+    user: state.user,
   };
 };
 export default connect(mapStateToProps)(Dashboard);

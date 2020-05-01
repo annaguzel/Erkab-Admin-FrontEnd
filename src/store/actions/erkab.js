@@ -1,4 +1,4 @@
-import { GET_SCHOOL, GET_BUSSES } from "./actionTypes";
+import { GET_SCHOOL, GET_BUSSES, ADD_SCHOOL } from "./actionTypes";
 
 import instance from "./instance";
 
@@ -25,5 +25,18 @@ export const fetchBusses = (schoolID) => async (dispatch) => {
     });
   } catch (error) {
     console.error(error);
+  }
+};
+
+export const postSchool = (school) => async (dispatch) => {
+  try {
+    const res = await instance.post("/add/school/", school);
+    const newSchool = res.data;
+    dispatch({
+      type: ADD_SCHOOL,
+      payload: newSchool,
+    });
+  } catch (error) {
+    console.error(error.response.data);
   }
 };

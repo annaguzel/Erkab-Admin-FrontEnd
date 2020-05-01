@@ -19,7 +19,9 @@ const Sidebar = () => (
       </h4>
     </section>
     <div className="fixed-bottom">
-      <button className="btn btn-info m-2 float-left">Submit</button>
+      <NavLink to="/add/school">
+        <button className="btn btn-info m-2 float-left">Add School</button>
+      </NavLink>
     </div>
   </div>
 );
