@@ -5,14 +5,14 @@ import School from "./Components/School";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import Login from "./Components/Login";
-import LocationPicking from "./Components/LocationPicking";
+import SchoolForm from "./Components/SchoolForm";
 
 function App() {
   return (
     <div>
       <Navbar />
       <Switch>
-        <Route path="/add/school/" component={LocationPicking} />
+        <Route path="/add/school/" component={SchoolForm} />
         <Route path="/login" component={Login} />
         <Route path="/busses/:schoolID" component={School} />
         <Route path="/" component={Dashboard} />
