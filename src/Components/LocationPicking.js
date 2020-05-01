@@ -94,8 +94,8 @@ const mapStateToProps = ({ user }) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    postSchool: (newSchool, position, closeModal) =>
-      dispatch(postSchool(newSchool, position, closeModal)),
+    postSchool: (newSchool, position) =>
+      dispatch(postSchool(newSchool, position)),
   };
 };
 

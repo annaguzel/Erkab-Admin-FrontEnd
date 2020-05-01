@@ -1,4 +1,4 @@
-import { GET_SCHOOL, GET_BUSSES, ADD_SCHOOL } from "./actionTypes";
+import { GET_SCHOOL, SET_BUSSES, ADD_SCHOOL } from "./actionTypes";
 
 import instance from "./instance";
 
@@ -20,7 +20,7 @@ export const fetchBusses = (schoolID) => async (dispatch) => {
     const res = await instance.get(`/school/${schoolID}/busses/`);
     const busses = res.data;
     dispatch({
-      type: GET_BUSSES,
+      type: SET_BUSSES,
       payload: busses,
     });
   } catch (error) {
