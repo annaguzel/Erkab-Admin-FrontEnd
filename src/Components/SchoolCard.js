@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import bus from "../images/bus.png";
+import schoolimage from "../images/school.png";
 const SchoolCard = ({ school }) => {
   return (
     <div className="col-lg-4 col-md-6 col-12">
@@ -9,7 +9,7 @@ const SchoolCard = ({ school }) => {
         <div className="image">
           <img
             className="card-img-top img-fluid"
-            src={school.image ? school.image : bus}
+            src={school.image ? school.image : schoolimage}
             alt={school.name}
           />
         </div>
@@ -19,7 +19,9 @@ const SchoolCard = ({ school }) => {
           <span>{school.name}</span>
         </h5>
 
-        <small className="card-text">Location</small>
+        <small className="card-text">
+          Location: {school.lat + "," + school.lng}
+        </small>
       </div>
     </div>
   );
