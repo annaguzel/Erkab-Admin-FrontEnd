@@ -31,12 +31,17 @@ class Bus extends Component {
     return (
       <div className="text-center">
         <div className="container mt-5">
-          <h3 style={{ color: "black" }}>Busses:</h3>
-          <div className="row mx-4">{busLists}</div>
-        </div>
-        <div className="box">
-          <h3 style={{ color: "black" }}>Children:</h3>
-          <div className="row mx-4">{childLists}</div>
+          <div className="image">
+            <h3 style={{ color: "black" }}>Busses</h3>
+            <hr />
+            <div className="row mx-4">{busLists}</div>
+          </div>
+
+          <div className="image ml-5">
+            <h3 style={{ color: "black" }}>Children</h3>
+            <hr />
+            <div className="row mx-4">{childLists}</div>
+          </div>
         </div>
       </div>
     );

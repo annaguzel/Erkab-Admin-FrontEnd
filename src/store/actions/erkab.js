@@ -32,6 +32,7 @@ export const fetchBusses = (schoolID) => async (dispatch) => {
     console.error(error);
   }
 };
+
 export const fetchChildren = (schoolID) => async (dispatch) => {
   try {
     const res = await instance.get(`/school/${schoolID}/children/`);

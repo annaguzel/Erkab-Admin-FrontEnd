@@ -5,10 +5,19 @@ class BusList extends Component {
     const bus = this.props.bus;
 
     return (
-      <div className="text-center">
-        <ul class="list-group">
-          <li class="list-group-item block">Driver Name: {bus.driver_name}</li>
-        </ul>
+      <div className=" mx-auto mt-2 text-center">
+        <table className="table table-borderless bg-light table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{bus.driver_name}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     );
   }

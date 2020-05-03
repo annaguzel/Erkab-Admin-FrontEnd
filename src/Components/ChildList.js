@@ -1,16 +1,24 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 
 class ChildList extends Component {
   render() {
     const child = this.props.child;
-
     return (
-      <div className="text-center">
-        <ul class="list-group">
-          <li class="list-group-item block">Name: {child.name}</li>
-          <li class="list-group-item block">Date of Birth: {child.dob}</li>
-        </ul>
+      <div className=" mx-auto mt-2 text-center">
+        <table className="table table-borderless bg-light table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Date of Birth</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{child.name}</td>
+              <td> {child.dob}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     );
   }
