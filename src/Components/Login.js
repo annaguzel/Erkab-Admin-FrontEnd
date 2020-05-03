@@ -24,7 +24,7 @@ class Login extends Component {
     const { username, password } = this.state;
     if (this.props.user) return <Redirect to="/" />;
     return (
-      <div>
+      <div className="text-center">
         <div className="container mt-5">
           <div className="image">
             <div className="col-6 mx-auto">
@@ -57,7 +57,7 @@ class Login extends Component {
                     </div>
 
                     <button type="submit" className="btn btn-info">
-                      Login
+                      Login to continue
                     </button>
                   </form>
                 </div>

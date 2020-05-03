@@ -6,7 +6,7 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import Login from "./Components/Login";
 import SchoolForm from "./Components/SchoolForm";
-
+import "./css/Style.css";
 function App() {
   return (
     <div>

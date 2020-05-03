@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import "../App.css";
 import { connect } from "react-redux";
 import SchoolCard from "./SchoolCard";
+import { Redirect } from "react-router-dom";
 
 import Sidebar from "./Sidebar";
 class Dashboard extends Component {
   render() {
+    if (!this.props.user) return <Redirect to="/login" />;
     const schoolCards = this.props.schools.map((school) => (
       <SchoolCard key={school.name} school={school} />
     ));
