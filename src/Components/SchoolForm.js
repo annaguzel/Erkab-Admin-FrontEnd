@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { postSchool } from "../store/actions";
 import { Redirect } from "react-router-dom";
-
+import schoolimg from "../images/school.png";
 class SchoolForm extends Component {
   state = {
     name: "",
-    image: undefined,
+    // image: schoolimg,
     lat: "",
     lng: "",
   };
@@ -16,7 +16,7 @@ class SchoolForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.postSchool(this.state);
+    this.props.postSchool(this.state, this.props.history);
   };
   render() {
     if (!this.props.user) return <Redirect to="/login" />;
@@ -40,10 +40,10 @@ class SchoolForm extends Component {
                       onChange={this.handleChange}
                     />
                   </div>
-                  <div className="form-group">
+                  {/* <div className="form-group">
                     <label htmlFor="imageUrl">Image Url</label>
                     <input
-                      type="text"
+                      type="file"
                       className="form-control"
                       id="imageUrl"
                       value={image}
@@ -51,7 +51,8 @@ class SchoolForm extends Component {
                       placeholder="imageUrl"
                       onChange={this.handleChange}
                     />
-                  </div>
+                  </div> */}
+
                   <div className="form-group">
                     <label htmlFor="latitude">Latitude</label>
                     <input
@@ -95,7 +96,8 @@ const mapStateToProps = ({ user }) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    postSchool: (newSchool) => dispatch(postSchool(newSchool)),
+    postSchool: (newSchool, history) =>
+      dispatch(postSchool(newSchool, history)),
   };
 };
 

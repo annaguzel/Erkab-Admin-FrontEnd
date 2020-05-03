@@ -46,7 +46,7 @@ export const fetchChildren = (schoolID) => async (dispatch) => {
   }
 };
 
-export const postSchool = (school) => async (dispatch) => {
+export const postSchool = (school, history) => async (dispatch) => {
   try {
     const res = await instance.post("/add/school/", school);
     const newSchool = res.data;
@@ -54,6 +54,7 @@ export const postSchool = (school) => async (dispatch) => {
       type: ADD_SCHOOL,
       payload: newSchool,
     });
+    history.replace("/");
   } catch (error) {
     console.error(error);
   }

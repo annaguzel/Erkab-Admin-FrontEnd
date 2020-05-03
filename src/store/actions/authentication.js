@@ -39,7 +39,6 @@ const setCurrentUser = (token) => {
   const user = token ? decode(token) : null;
   return { type: SET_CURRENT_USER, payload: user };
 };
-
 const setAuthToken = (token) => {
   if (token) {
     localStorage.setItem("token", token);

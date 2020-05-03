@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Dashboard from "./Components/Dashboard";
 import School from "./Components/School";
 import Navbar from "./Components/Navbar";
@@ -16,6 +16,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/busses/:schoolID" component={School} />
         <Route path="/" component={Dashboard} />
+        <Redirect to="/" />
       </Switch>
       <Footer />
     </div>
