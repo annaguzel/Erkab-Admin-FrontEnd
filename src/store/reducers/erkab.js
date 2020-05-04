@@ -3,6 +3,7 @@ import {
   SET_BUSSES,
   SET_CHILDREN,
   ADD_SCHOOL,
+  ADD_DRIVER,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -32,6 +33,11 @@ const erkabReducer = (state = initialState, action) => {
       return {
         ...state,
         schools: [action.payload, ...state.schools],
+      };
+    case ADD_DRIVER:
+      return {
+        ...state,
+        busses: [action.payload, ...state.busses],
       };
     default:
       return state;

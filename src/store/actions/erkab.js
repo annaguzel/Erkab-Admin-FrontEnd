@@ -3,6 +3,7 @@ import {
   SET_BUSSES,
   SET_CHILDREN,
   ADD_SCHOOL,
+  ADD_DRIVER,
 } from "./actionTypes";
 
 import instance from "./instance";
@@ -53,6 +54,20 @@ export const postSchool = (school, history) => async (dispatch) => {
     dispatch({
       type: ADD_SCHOOL,
       payload: newSchool,
+    });
+    history.push("/dashboard");
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const addDriver = (driver, schoolID, history) => async (dispatch) => {
+  try {
+    const res = await instance.post(`/add/busdriver/${schoolID}/`, driver);
+    const newDriver = res.data;
+    dispatch({
+      type: ADD_DRIVER,
+      payload: newDriver,
     });
     history.push("/dashboard");
   } catch (error) {

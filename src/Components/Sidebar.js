@@ -10,19 +10,14 @@ const Sidebar = () => (
     </section>
     <section>
       <h4 className="menu-item active mb-5 ml-3">
-        <NavLink to="/routes">Routes</NavLink>
+        <NavLink to="/add/school">Add School</NavLink>
       </h4>
     </section>
     <section>
       <h4 className="menu-item active mb-5 ml-3">
-        <NavLink to="/drivers">Drivers</NavLink>
+        <NavLink to="/add/driver">Add Driver</NavLink>
       </h4>
     </section>
-    <div className="fixed-bottom">
-      <NavLink to="/add/school">
-        <button className="btn btn-info m-2 float-left">Add School</button>
-      </NavLink>
-    </div>
   </div>
 );
 
