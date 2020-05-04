@@ -3,16 +3,25 @@ import { setErrors } from "./errors";
 import decode from "jwt-decode";
 import { fetchSchools } from "./erkab";
 import instance from "./instance";
+
 export const checkForExpiredToken = () => (dispatch) => {
   const token = localStorage.getItem("token");
+  console.log("1");
   if (token) {
     const currentTimeInSeconds = Date.now() / 1000;
+    console.log("2");
+
     const user = decode(token);
+    console.log(user.exp, "exp");
+    console.log(currentTimeInSeconds, "Time in seconds");
+
     if (user.exp >= currentTimeInSeconds) {
+      console.log(token, "token");
       dispatch(setCurrentUser(token));
       dispatch(fetchSchools());
     }
   } else {
+    console.log("3");
     dispatch(setCurrentUser());
   }
 };

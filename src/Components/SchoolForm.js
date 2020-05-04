@@ -14,6 +14,8 @@ class SchoolForm extends Component {
   handleChange = (event) =>
     this.setState({ [event.target.name]: event.target.value });
 
+  handlePosition = ({ lat, lng }) => this.setState({ lat: lat, lng: lng });
+
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.postSchool(this.state, this.props.history);
@@ -86,7 +88,7 @@ class SchoolForm extends Component {
           </div>
         </div>
         <div className="image">
-          <LocationPicking />
+          <LocationPicking handlePosition={this.handlePosition} />
         </div>
       </div>
     );
