@@ -6,7 +6,7 @@ import LocationPicking from "./LocationPicking";
 class SchoolForm extends Component {
   state = {
     name: "",
-    image: "",
+    image: null,
     lat: "",
     lng: "",
   };
@@ -15,14 +15,25 @@ class SchoolForm extends Component {
     this.setState({ [event.target.name]: event.target.value });
 
   handlePosition = ({ lat, lng }) => this.setState({ lat: lat, lng: lng });
-
+  handleImageChange = (event) => {
+    this.setState({ image: event.target.files[0] });
+  };
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.postSchool(this.state, this.props.history);
+    let form_data = new FormData();
+    form_data.append("name", this.state.name);
+    form_data.append("image", this.state.image, this.state.image.name);
+    form_data.append("lat", this.state.lat);
+    form_data.append("lng", this.state.lng);
+    this.props.postSchool(form_data, this.props.history, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
   };
   render() {
     if (!this.props.user) return <Redirect to="/" />;
-    const { name, image } = this.state;
+    const { name } = this.state;
     return (
       <div className="text-center">
         <div className="container mt-5">
@@ -43,15 +54,14 @@ class SchoolForm extends Component {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="imageUrl">Image Url</label>
+                    <label htmlFor="image">Image </label>
                     <input
-                      type="text"
+                      type="file"
                       className="form-control"
-                      id="imageUrl"
-                      value={image}
-                      name="image"
-                      placeholder="imageUrl"
-                      onChange={this.handleChange}
+                      id="image"
+                      accept="image/png, image/jpeg"
+                      placeholder="UploadImage"
+                      onChange={this.handleImageChange}
                     />
                   </div>
                   <button type="submit" className="btn btn-info">
