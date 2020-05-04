@@ -23,6 +23,7 @@ class Login extends Component {
   render() {
     const { username, password } = this.state;
     if (this.props.user) return <Redirect to="/" />;
+    // else alert("You have to be admin user");
     return (
       <div className="text-center">
         <div className="container mt-5">
@@ -54,7 +55,6 @@ class Login extends Component {
                       onChange={this.handleChange}
                     />
                   </div>
-
                   <button type="submit" className="btn btn-info">
                     Login to continue
                   </button>

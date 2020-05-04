@@ -10,12 +10,16 @@ class ChildList extends Component {
             <tr>
               <th scope="col">Name</th>
               <th scope="col">Date of Birth</th>
+              {/* <th scope="col">Latitude</th>
+              <th scope="col">Longtitude</th> */}
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>{child.name}</td>
               <td> {child.dob}</td>
+              {/* <td> {child.lat}</td>
+              <td> {child.lng}</td> */}
             </tr>
           </tbody>
         </table>
