@@ -41,7 +41,8 @@ class SchoolForm extends Component {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="imageUrl">Image Url</label>
+                    <label htmlFor="imageUrl">Image Url</label>{" "}
+                    {/* Why not handle actual image files, rather than image URLs? */}
                     <input
                       type="text"
                       className="form-control"
