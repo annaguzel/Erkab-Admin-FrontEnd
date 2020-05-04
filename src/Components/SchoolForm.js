@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { postSchool } from "../store/actions";
 import { Redirect } from "react-router-dom";
-import schoolimg from "../images/school.png";
+import LocationPicking from "./LocationPicking";
 class SchoolForm extends Component {
   state = {
     name: "",
-    // image: schoolimg,
+    image: "",
     lat: "",
     lng: "",
   };
@@ -22,8 +22,8 @@ class SchoolForm extends Component {
     if (!this.props.user) return <Redirect to="/login" />;
     const { name, image, lat, lng } = this.state;
     return (
-      <div className="text-center">
-        <div className="image">
+      <div className="text-center container">
+        <div className="image ">
           <div className="col-6 mx-auto">
             <div className="card my-5">
               <div className="card-body">
@@ -40,10 +40,10 @@ class SchoolForm extends Component {
                       onChange={this.handleChange}
                     />
                   </div>
-                  {/* <div className="form-group">
+                  <div className="form-group">
                     <label htmlFor="imageUrl">Image Url</label>
                     <input
-                      type="file"
+                      type="text"
                       className="form-control"
                       id="imageUrl"
                       value={image}
@@ -51,7 +51,7 @@ class SchoolForm extends Component {
                       placeholder="imageUrl"
                       onChange={this.handleChange}
                     />
-                  </div> */}
+                  </div>
 
                   <div className="form-group">
                     <label htmlFor="latitude">Latitude</label>
@@ -84,6 +84,9 @@ class SchoolForm extends Component {
               </div>
             </div>
           </div>
+        </div>
+        <div className="image">
+          <LocationPicking />
         </div>
       </div>
     );

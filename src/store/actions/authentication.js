@@ -1,13 +1,10 @@
-import instance from "./instance";
-
 import { SET_CURRENT_USER } from "./actionTypes";
-import { fetchSchools } from "./erkab";
 import { setErrors } from "./errors";
 import decode from "jwt-decode";
-
+import { fetchSchools } from "./erkab";
+import instance from "./instance";
 export const checkForExpiredToken = () => (dispatch) => {
   const token = localStorage.getItem("token");
-
   if (token) {
     const currentTimeInSeconds = Date.now() / 1000;
     const user = decode(token);
@@ -19,7 +16,6 @@ export const checkForExpiredToken = () => (dispatch) => {
     dispatch(setCurrentUser());
   }
 };
-
 export const login = (userData) => async (dispatch) => {
   try {
     const res = await instance.post("/login/", userData);
@@ -33,7 +29,6 @@ export const login = (userData) => async (dispatch) => {
 };
 
 export const logout = () => setCurrentUser();
-
 const setCurrentUser = (token) => {
   setAuthToken(token);
   const user = token ? decode(token) : null;
