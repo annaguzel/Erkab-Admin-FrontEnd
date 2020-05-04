@@ -13,10 +13,10 @@ function App() {
       <Navbar />
       <Switch>
         <Route path="/add/school/" component={SchoolForm} />
-        <Route path="/login" component={Login} />
         <Route path="/busses/:schoolID" component={School} />
-        <Route path="/" component={Dashboard} />
-        <Redirect to="/" />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/" component={Login} />
+        <Redirect to="/dashboard" />
       </Switch>
       <Footer />
     </div>

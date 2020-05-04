@@ -29,8 +29,10 @@ const erkabReducer = (state = initialState, action) => {
         children: action.payload,
       };
     case ADD_SCHOOL:
-      const newSchool = action.payload;
-      return { schools: [newSchool, ...state] };
+      return {
+        ...state,
+        schools: [action.payload, ...state.schools],
+      };
     default:
       return state;
   }

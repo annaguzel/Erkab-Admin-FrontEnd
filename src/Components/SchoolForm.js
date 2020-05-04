@@ -21,13 +21,13 @@ class SchoolForm extends Component {
     this.props.postSchool(this.state, this.props.history);
   };
   render() {
-    if (!this.props.user) return <Redirect to="/login" />;
-    const { name, image, lat, lng } = this.state;
+    if (!this.props.user) return <Redirect to="/" />;
+    const { name, image } = this.state;
     return (
-      <div className="text-center container">
-        <div className="image ">
-          <div className="col-6 mx-auto">
-            <div className="card my-5">
+      <div className="text-center">
+        <div className="container mt-5">
+          <div className="image">
+            <div className="card my-5 mt-5">
               <div className="card-body">
                 <form onSubmit={this.handleSubmit}>
                   <div className="form-group">
@@ -54,31 +54,6 @@ class SchoolForm extends Component {
                       onChange={this.handleChange}
                     />
                   </div>
-
-                  <div className="form-group">
-                    <label htmlFor="latitude">Latitude</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="latitude"
-                      value={lat}
-                      name="lat"
-                      placeholder="latitude"
-                      onChange={this.handleChange}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="longtitude">Longtitude</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="longtitude"
-                      value={lng}
-                      name="lng"
-                      placeholder="longtitude"
-                      onChange={this.handleChange}
-                    />
-                  </div>
                   <button type="submit" className="btn btn-info">
                     ADD
                   </button>
@@ -86,9 +61,9 @@ class SchoolForm extends Component {
               </div>
             </div>
           </div>
-        </div>
-        <div className="image">
-          <LocationPicking handlePosition={this.handlePosition} />
+          <div className="image ml-5">
+            <LocationPicking handlePosition={this.handlePosition} />
+          </div>
         </div>
       </div>
     );

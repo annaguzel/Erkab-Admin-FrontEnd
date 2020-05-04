@@ -27,7 +27,7 @@ class Bus extends Component {
     const childLists = this.props.children.map((child) => (
       <ChildList key={child.name + child.id} child={child} />
     ));
-    if (!this.props.user) return <Redirect to="/login" />;
+    if (!this.props.user) return <Redirect to="/" />;
     return (
       <div className="text-center">
         <div className="container mt-5">

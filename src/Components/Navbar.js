@@ -10,8 +10,8 @@ class NavBar extends Component {
       <header>
         <Navbar collapseOnSelect expand="lg" className="bg-light">
           <Navbar.Brand>
-            <Link to={"/"} className="navbar-brand">
-              <img className="logo mr-3" src={logo} alt="" />
+            <Link to={"/dashboard"} className="navbar-brand">
+              <img className="logo mr-3" src={logo} alt="erkablogo" />
             </Link>
           </Navbar.Brand>
 

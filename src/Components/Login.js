@@ -22,7 +22,7 @@ class Login extends Component {
 
   render() {
     const { username, password } = this.state;
-    if (this.props.user) return <Redirect to="/" />;
+    if (this.props.user) return <Redirect to="/dashboard" />;
     // else alert("You have to be admin user");
     return (
       <div className="text-center">

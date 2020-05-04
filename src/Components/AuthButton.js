@@ -25,7 +25,7 @@ const AuthButton = ({ user, logout }) => {
     <li key="loginButton" className="nav-item font-weight-bold">
       <Link
         style={{ color: "#ffea32", fontSize: "1.2rem" }}
-        to="/login"
+        to="/"
         className="nav-link"
       >
         Login

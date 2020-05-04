@@ -54,7 +54,7 @@ export const postSchool = (school, history) => async (dispatch) => {
       type: ADD_SCHOOL,
       payload: newSchool,
     });
-    history.replace("/");
+    history.push("/dashboard");
   } catch (error) {
     console.error(error);
   }

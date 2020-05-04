@@ -7,7 +7,7 @@ import { Redirect } from "react-router-dom";
 import Sidebar from "./Sidebar";
 class Dashboard extends Component {
   render() {
-    if (!this.props.user) return <Redirect to="/login" />;
+    if (!this.props.user) return <Redirect to="/" />;
     const schoolCards = this.props.schools.map((school) => (
       <SchoolCard key={school.name} school={school} />
     ));
