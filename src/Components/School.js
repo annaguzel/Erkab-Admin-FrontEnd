@@ -27,12 +27,6 @@ class Bus extends Component {
   }
 
   render() {
-    const places = [
-      { latitude: 31.975973035435832, longitude: 35.90701305273439 },
-      { latitude: 31.92003975585111, longitude: 35.89877330664064 },
-      { latitude: 31.96082780136791, longitude: 35.97842418554689 },
-    ];
-
     const {
       loadingElement,
       containerElement,
