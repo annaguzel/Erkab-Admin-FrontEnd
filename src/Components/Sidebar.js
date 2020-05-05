@@ -18,11 +18,6 @@ const Sidebar = () => (
         <NavLink to="/add/driver">Add Driver</NavLink>
       </h4>
     </section>
-    <section>
-      <h4 className="menu-item active mb-5 ml-3">
-        <NavLink to="/route">Route</NavLink>
-      </h4>
-    </section>
   </div>
 );
 

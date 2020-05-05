@@ -4,14 +4,14 @@ import {
   SET_CHILDREN,
   ADD_SCHOOL,
   ADD_DRIVER,
-  // DELETE_SCHOOL,
-  // DELETE_BUS,
+  FETCH_ROUTE,
 } from "../actions/actionTypes";
 
 const initialState = {
   schools: [],
   busses: [],
   children: [],
+  route: [],
 };
 
 const erkabReducer = (state = initialState, action) => {
@@ -30,6 +30,11 @@ const erkabReducer = (state = initialState, action) => {
       return {
         ...state,
         children: action.payload,
+      };
+    case FETCH_ROUTE:
+      return {
+        ...state,
+        route: action.payload,
       };
     case ADD_SCHOOL:
       return {

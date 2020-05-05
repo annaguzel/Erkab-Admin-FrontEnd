@@ -7,3 +7,4 @@ export const ADD_SCHOOL = "ADD_SCHOOL";
 export const ADD_DRIVER = "ADD_DRIVER";
 export const DELETE_SCHOOL = "DELETE_SCHOOL";
 export const DELETE_BUS = "DELETE_BUS";
+export const FETCH_ROUTE = "FETCH_ROUTE";

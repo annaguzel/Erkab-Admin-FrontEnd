@@ -6,7 +6,7 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import AddDriver from "./Components/AddDriver";
 import Login from "./Components/Login";
-import Routes from "./Components/Routes";
+
 import SchoolForm from "./Components/SchoolForm";
 import "./css/Style.css";
 function App() {
@@ -18,7 +18,7 @@ function App() {
         <Route path="/add/driver" component={AddDriver} />
         <Route path="/busses/:schoolID" component={School} />
         <Route path="/dashboard" component={Dashboard} />
-        <Route path="/route" component={Routes} />
+
         <Route path="/" component={Login} />
         <Redirect to="/dashboard" />
       </Switch>

@@ -6,6 +6,7 @@ import {
   ADD_DRIVER,
   DELETE_SCHOOL,
   DELETE_BUS,
+  FETCH_ROUTE,
 } from "./actionTypes";
 
 import instance from "./instance";
@@ -49,6 +50,18 @@ export const fetchChildren = (schoolID) => async (dispatch) => {
   }
 };
 
+export const fetchRoute = (schoolID) => async (dispatch) => {
+  try {
+    const res = await instance.get(`/routes/${schoolID}/`);
+    const route = res.data;
+    dispatch({
+      type: FETCH_ROUTE,
+      payload: route,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
 export const postSchool = (school, history) => async (dispatch) => {
   try {
     const res = await instance.post("/add/school/", school);
