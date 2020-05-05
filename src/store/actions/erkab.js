@@ -4,6 +4,8 @@ import {
   SET_CHILDREN,
   ADD_SCHOOL,
   ADD_DRIVER,
+  DELETE_SCHOOL,
+  DELETE_BUS,
 } from "./actionTypes";
 
 import instance from "./instance";
@@ -74,3 +76,17 @@ export const addDriver = (driver, schoolID, history) => async (dispatch) => {
     console.error(error);
   }
 };
+
+// export const deleteSchool = (school) => {
+//   return {
+//     type: DELETE_SCHOOL,
+//     payload: school,
+//   };
+// };
+
+// export const deleteBus = (bus) => {
+//   return {
+//     type: DELETE_BUS,
+//     payload: bus,
+//   };
+// };

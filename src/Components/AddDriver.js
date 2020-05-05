@@ -49,7 +49,7 @@ class AddDriver extends Component {
                   </div>
                   <div className="form-group">
                     {this.props.schools.map((school) => (
-                      <label key={school.name}>
+                      <label className="mx-5" key={school.name}>
                         <input
                           type="radio"
                           value={school.id}

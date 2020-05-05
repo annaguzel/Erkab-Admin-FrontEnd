@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+// import { connect } from "react-redux";
+// import { deleteBus } from "../store/actions";
 
 class BusList extends Component {
   render() {
@@ -10,11 +12,22 @@ class BusList extends Component {
           <thead>
             <tr>
               <th scope="col">Name</th>
+              {/* <th scope="col"></th> */}
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>{bus.driver_name}</td>
+              {/* <td>
+                {" "}
+                <button
+                  type="button"
+                  class="btn btn-danger  "
+                  onClick={() => this.props.deleteBus(bus)}
+                >
+                  DELETE
+                </button>
+              </td> */}
             </tr>
           </tbody>
         </table>
@@ -22,5 +35,9 @@ class BusList extends Component {
     );
   }
 }
-
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     deleteBus: (bus) => dispatch(deleteBus(bus)),
+//   };
+// };
 export default BusList;
