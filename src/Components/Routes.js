@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Map from "./Map";
+import Map from "./Maps";
 
 const googleMapsApiKey = "AIzaSyAA4NGNqboLQzgPWCVw2DzZB3QuBnoFtvY";
 
