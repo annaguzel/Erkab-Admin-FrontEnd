@@ -6,7 +6,7 @@ import ChildList from "./ChildList";
 import { Redirect } from "react-router-dom";
 import Map from "./Maps";
 
-const googleMapsApiKey = "AIzaSyAA4NGNqboLQzgPWCVw2DzZB3QuBnoFtvY";
+const googleMapsApiKey = "AIzaSyB1bZjRb_ke0TJH76V-UYzX4tyEZ5d9J4Y";
 
 class Bus extends Component {
   componentDidMount() {
