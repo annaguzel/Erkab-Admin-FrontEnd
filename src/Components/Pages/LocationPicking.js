@@ -38,9 +38,6 @@ class LocationPicking extends Component {
   render() {
     return (
       <div>
-        <h3>{this.state.address}</h3>
-        <h5>Latitude: {this.state.position.lat}</h5>
-        <h5>Longitude: {this.state.position.lng}</h5>
         <div className="text-center">
           <LocationPicker
             containerElement={<div style={{ height: "100%" }} />}

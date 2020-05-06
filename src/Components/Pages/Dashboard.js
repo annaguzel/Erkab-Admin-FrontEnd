@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import "../App.css";
+import "../../css/Style.css";
 import { connect } from "react-redux";
 import SchoolCard from "./SchoolCard";
 import { Redirect } from "react-router-dom";
 
-import Sidebar from "./Sidebar";
 class Dashboard extends Component {
   render() {
     if (!this.props.user) return <Redirect to="/" />;
@@ -13,14 +12,9 @@ class Dashboard extends Component {
     ));
     return (
       <div id="app" className="container-fluid">
-        <div className="row">
-          <div className="col-2 bg-light">
-            <Sidebar />
-          </div>
-          <div className="content col-10">
-            <div className="schools">
-              <div className="row">{schoolCards}</div>
-            </div>
+        <div className="content col">
+          <div className="schools">
+            <div className="row">{schoolCards}</div>
           </div>
         </div>
       </div>

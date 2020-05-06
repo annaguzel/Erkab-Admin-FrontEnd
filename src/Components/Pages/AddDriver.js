@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addDriver } from "../store/actions";
+import { addDriver } from "../../store/actions";
 import LocationPicking from "./LocationPicking";
 import { Redirect } from "react-router-dom";
 
@@ -17,7 +17,7 @@ class AddDriver extends Component {
 
   handlePosition = ({ lat, lng }) => this.setState({ lat: lat, lng: lng });
 
-  handleRadio = (value) => this.setState({ school: value });
+  handleList = (value) => this.setState({ school: value });
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -32,6 +32,9 @@ class AddDriver extends Component {
           <div className="image">
             <div className="card my-5 mt-5">
               <div className="card-body">
+                <div class="card-header">
+                  <h3 className="display-4"> Add Driver</h3>
+                </div>
                 <form onSubmit={this.handleSubmit}>
                   <div className="form-group">
                     <label className="ml-3" htmlFor="name">
@@ -48,24 +51,21 @@ class AddDriver extends Component {
                     />
                   </div>
                   <div className="form-group">
-                    {this.props.schools.map((school) => (
-                      <label className="mx-5" key={school.name}>
-                        <input
-                          type="radio"
-                          value={school.id}
-                          name="school"
-                          key={school.id}
-                          onChange={(event) =>
-                            this.handleRadio(event.target.value)
-                          }
-                        />
-                        {school.name}
-                      </label>
-                    ))}
+                    <select
+                      name="school"
+                      className="custom-search-select"
+                      onChange={(event) => this.handleList(event.target.value)}
+                    >
+                      <option>Select School</option>
+                      {this.props.schools.map((school) => (
+                        <option key={school.id} value={school.id}>
+                          {school.name}
+                        </option>
+                      ))}
+                    </select>
                   </div>
-
                   <button type="submit" className="btn btn-info">
-                    Add Driver
+                    ADD DRIVER
                   </button>
                 </form>
               </div>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { postSchool } from "../store/actions";
+import { postSchool } from "../../store/actions";
 import { Redirect } from "react-router-dom";
 import LocationPicking from "./LocationPicking";
 class SchoolForm extends Component {
@@ -38,7 +38,10 @@ class SchoolForm extends Component {
       <div className="text-center">
         <div className="container mt-5">
           <div className="image">
-            <div className="card my-5 mt-5">
+            <div className="card text-center ml-5">
+              <div class="card-header">
+                <h3 className="display-4"> Add School</h3>
+              </div>
               <div className="card-body">
                 <form onSubmit={this.handleSubmit}>
                   <div className="form-group">
@@ -53,7 +56,7 @@ class SchoolForm extends Component {
                       onChange={this.handleChange}
                     />
                   </div>
-                  <div className="form-group">
+                  <div className="form-group mb-3">
                     <label htmlFor="image">Image </label>
                     <input
                       type="file"
@@ -64,8 +67,9 @@ class SchoolForm extends Component {
                       onChange={this.handleImageChange}
                     />
                   </div>
+
                   <button type="submit" className="btn btn-info">
-                    ADD
+                    ADD SCHOOL
                   </button>
                 </form>
               </div>

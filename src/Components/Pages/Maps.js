@@ -4,7 +4,6 @@ import {
   withGoogleMap,
   GoogleMap,
   withScriptjs,
-  // Marker,
   DirectionsRenderer,
 } from "react-google-maps";
 
@@ -12,6 +11,7 @@ class MapDirectionsRenderer extends React.Component {
   state = {
     directions: null,
     error: null,
+    distance: null,
   };
 
   componentDidMount() {
@@ -23,6 +23,18 @@ class MapDirectionsRenderer extends React.Component {
     }));
     const origin = waypoints.shift().location;
     const destination = waypoints.pop().location;
+
+    const distance = (result) => {
+      let total = 0;
+      let myroute = result.routes[0];
+      for (var i = 0; i < myroute.legs.length; i++) {
+        total += myroute.legs[i].distance.value;
+      }
+      total = total / 1000;
+      this.setState({
+        distance: total,
+      });
+    };
 
     const directionsService = new google.maps.DirectionsService();
     directionsService.route(
@@ -37,6 +49,8 @@ class MapDirectionsRenderer extends React.Component {
           this.setState({
             directions: result,
           });
+          distance(result);
+          console.log(this.state.distance);
         } else {
           this.setState({ error: result });
         }
@@ -50,7 +64,10 @@ class MapDirectionsRenderer extends React.Component {
     }
     return (
       this.state.directions && (
-        <DirectionsRenderer directions={this.state.directions} />
+        <DirectionsRenderer
+          directions={this.state.directions}
+          distance={this.state.distance}
+        />
       )
     );
   }
@@ -62,10 +79,6 @@ const Map = withScriptjs(
       defaultCenter={props.defaultCenter}
       defaultZoom={props.defaultZoom}
     >
-      {/* {props.markers.map((marker, index) => {
-        const position = { lat: marker.latitude, lng: marker.longitude };
-        return <Marker key={index} position={position} />;
-      })} */}
       <MapDirectionsRenderer
         locations={props.markers}
         travelMode={google.maps.TravelMode.DRIVING}

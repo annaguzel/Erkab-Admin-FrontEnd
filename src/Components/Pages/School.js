@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchBusses, fetchChildren, fetchRoute } from "../store/actions";
+import { fetchBusses, fetchChildren, fetchRoute } from "../../store/actions";
 import BusList from "./BusList";
 import ChildList from "./ChildList";
 import { Redirect } from "react-router-dom";
 import Map from "./Maps";
+// import { GoogleMap, Marker } from "react-google-maps";
 
 const googleMapsApiKey = "AIzaSyB1bZjRb_ke0TJH76V-UYzX4tyEZ5d9J4Y";
 
-class Bus extends Component {
+class School extends Component {
   componentDidMount() {
     const schoolID = this.props.match.params.schoolID;
 
@@ -47,20 +48,34 @@ class Bus extends Component {
         <div className="container mt-5">
           <div className="image">
             <h3 style={{ color: "black" }}>Busses</h3>
-            <hr />
-            <div className="row mx-4">{busLists}</div>
+            <table className="mt-3 table ">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </thead>
+              <tbody>{busLists}</tbody>
+            </table>
           </div>
 
           <div className="image ml-5">
             <h3 style={{ color: "black" }}>Children</h3>
-            <hr />
-            <div className="row mx-4">{childLists}</div>
+
+            <table className="mt-3 table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Date of Birth</th>
+                </tr>
+              </thead>
+              <tbody>{childLists}</tbody>
+            </table>
           </div>
         </div>
-        <h2>Routes:</h2>
+        <h2 className="display-3">Routes:</h2>
         {this.props.route.map((route) => (
           <div>
-            <h3>Driver Name : {route.bus}</h3>
+            <h3 className="display-5">Driver Name: {route.bus}</h3>
             <Map
               googleMapURL={
                 "https://maps.googleapis.com/maps/api/js?key=" +
@@ -93,16 +108,16 @@ const mapStateToProps = (state) => {
   return {
     busses: state.erkab.busses,
     children: state.erkab.children,
-    user: state.user,
     route: state.erkab.route,
+    user: state.user,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
+    fetchRoute: (schoolID) => dispatch(fetchRoute(schoolID)),
     fetchBusses: (schoolID) => dispatch(fetchBusses(schoolID)),
     fetchChildren: (schoolID) => dispatch(fetchChildren(schoolID)),
-    fetchRoute: (schoolID) => dispatch(fetchRoute(schoolID)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Bus);
+export default connect(mapStateToProps, mapDispatchToProps)(School);
