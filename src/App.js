@@ -10,7 +10,7 @@ import Wrapper from "./Components/Wrapper";
 const wrapperDashboard = Wrapper(Dashboard);
 const wrapperSchoolForm = Wrapper(SchoolForm);
 const wrapperAddDriver = Wrapper(AddDriver);
-const wrapperLogin = Wrapper(Login);
+// const wrapperLogin = Wrapper(Login);
 const wrapperSchool = Wrapper(School);
 class App extends Component {
   render() {
@@ -23,7 +23,7 @@ class App extends Component {
           <Route path="/busses/:schoolID" component={wrapperSchool} />
           <Route path="/dashboard" component={wrapperDashboard} />
 
-          <Route path="/" component={wrapperLogin} />
+          <Route path="/" component={Login} />
           <Redirect to="/dashboard" />
         </Switch>
       </div>

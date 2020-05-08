@@ -9,3 +9,4 @@ export const DELETE_SCHOOL = "DELETE_SCHOOL";
 export const DELETE_BUS = "DELETE_BUS";
 export const FETCH_ROUTE = "FETCH_ROUTE";
 export const DASHBOARD_DRAWER_OPEN = "DASHBOARD_DRAWER_OPEN";
+export const ADD_ROUTE = "ADD_ROUTE";

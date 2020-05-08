@@ -6,7 +6,8 @@ export {
   fetchChildren,
   postSchool,
   addDriver,
-  fetchRoute, // deleteSchool, // deleteBus,
+  fetchRoute,
+  addRoute,
 } from "./erkab";
 
 export * from "./dashboard-actions";

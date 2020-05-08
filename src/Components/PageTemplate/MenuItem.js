@@ -14,25 +14,25 @@ export const mainListItems = (
     <Link to="/dashboard" style={{ textDecoration: "none" }}>
       <ListItem button>
         <ListItemIcon>
-          <DashboardIcon />
+          <DashboardIcon style={{ fill: "#5bc0de" }} />
         </ListItemIcon>
-        <ListItemText primary="Dashboard" />
+        <ListItemText secondary="Dashboard" />
       </ListItem>
     </Link>
     <Link to="/add/school/" style={{ textDecoration: "none" }}>
       <ListItem button>
         <ListItemIcon>
-          <SchoolIcon />
+          <SchoolIcon style={{ fill: "#5bc0de" }} />
         </ListItemIcon>
-        <ListItemText primary="Add School" />
+        <ListItemText secondary="Add School" />
       </ListItem>
     </Link>
     <Link to="/add/driver" style={{ textDecoration: "none" }}>
       <ListItem button>
         <ListItemIcon>
-          <DirectionsBusIcon />
+          <DirectionsBusIcon style={{ fill: "#5bc0de" }} />
         </ListItemIcon>
-        <ListItemText primary="Add Driver" />
+        <ListItemText secondary="Add Driver" />
       </ListItem>
     </Link>
     {/* <Link to="/raporlar" style={{ textDecoration: "none" }}>

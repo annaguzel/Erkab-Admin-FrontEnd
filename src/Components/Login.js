@@ -26,6 +26,8 @@ class Login extends Component {
     // else alert("You have to be admin user");
     return (
       <div className="text-center">
+        <h1 className="display-3 mt-3">ErKab</h1>
+        <h3 className="display-4">Welcome to Admin Page</h3>
         <div className="container mt-5">
           <div className="image">
             <div className="card my-5">

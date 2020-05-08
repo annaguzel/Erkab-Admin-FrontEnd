@@ -4,8 +4,7 @@ import {
   SET_CHILDREN,
   ADD_SCHOOL,
   ADD_DRIVER,
-  DELETE_SCHOOL,
-  DELETE_BUS,
+  ADD_ROUTE,
   FETCH_ROUTE,
 } from "./actionTypes";
 
@@ -90,16 +89,15 @@ export const addDriver = (driver, schoolID, history) => async (dispatch) => {
   }
 };
 
-// export const deleteSchool = (school) => {
-//   return {
-//     type: DELETE_SCHOOL,
-//     payload: school,
-//   };
-// };
-
-// export const deleteBus = (bus) => {
-//   return {
-//     type: DELETE_BUS,
-//     payload: bus,
-//   };
-// };
+export const addRoute = (route) => async (dispatch) => {
+  try {
+    const res = await instance.post("/add/route/", route);
+    const newRoute = res.data;
+    dispatch({
+      type: ADD_ROUTE,
+      payload: newRoute,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};

@@ -12,6 +12,7 @@ import {
   IconButton,
   ChevronLeftIcon,
 } from "../includes";
+import DirectionsBusIcon from "@material-ui/icons/DirectionsBus";
 import { drawerOpenClick } from "../includes/actions";
 import { mainListItems } from "./MenuItem";
 import AuthButton from "../Pages/AuthButton";
@@ -46,8 +47,9 @@ class TopBarMenu extends Component {
             >
               <MenuIcon />
             </IconButton>
+            <DirectionsBusIcon />
             <Typography
-              component="h1"
+              component="h2"
               variant="title"
               color="inherit"
               noWrap

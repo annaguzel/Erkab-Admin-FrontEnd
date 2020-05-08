@@ -14,7 +14,7 @@ class Dashboard extends Component {
       <div id="app" className="container-fluid">
         <div className="content col">
           <div className="schools">
-            <div className="row">{schoolCards}</div>
+            <div className="row justify-content-center">{schoolCards}</div>
           </div>
         </div>
       </div>

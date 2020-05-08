@@ -5,6 +5,7 @@ import {
   ADD_SCHOOL,
   ADD_DRIVER,
   FETCH_ROUTE,
+  ADD_ROUTE,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -20,6 +21,11 @@ const erkabReducer = (state = initialState, action) => {
       return {
         ...state,
         schools: action.payload,
+      };
+    case ADD_ROUTE:
+      return {
+        ...state,
+        route: [action.payload, ...state.routes],
       };
     case SET_BUSSES:
       return {

@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchBusses, fetchChildren, fetchRoute } from "../../store/actions";
-import BusList from "./BusList";
-import ChildList from "./ChildList";
+import {
+  fetchBusses,
+  fetchChildren,
+  fetchRoute,
+  addRoute,
+} from "../../store/actions";
+
 import { Redirect } from "react-router-dom";
 import Map from "./Maps";
 // import { GoogleMap, Marker } from "react-google-maps";
@@ -10,6 +14,12 @@ import Map from "./Maps";
 const googleMapsApiKey = "AIzaSyB1bZjRb_ke0TJH76V-UYzX4tyEZ5d9J4Y";
 
 class School extends Component {
+  state = {
+    bus: "",
+    kids: [],
+    school: parseInt(this.props.match.params.schoolID),
+  };
+
   componentDidMount() {
     const schoolID = this.props.match.params.schoolID;
 
@@ -20,12 +30,17 @@ class School extends Component {
 
   componentDidUpdate(prevProps) {
     const schoolID = this.props.match.params.schoolID;
+
     if (schoolID !== prevProps.match.params.schoolID) {
       this.props.fetchBusses(schoolID);
       this.props.fetchChildren(schoolID);
       this.props.fetchRoute(schoolID);
     }
   }
+
+  handleSubmit = () => {
+    this.props.addRoute(this.state);
+  };
 
   render() {
     const {
@@ -35,13 +50,45 @@ class School extends Component {
       defaultCenter,
       defaultZoom,
     } = this.props;
+    console.log(this.state);
+    const busLists = this.props.busses.map((bus) => {
+      return (
+        <tr key={bus.id}>
+          <td>{bus.id}</td>
+          <td>{bus.driver_name}</td>
+          <td>
+            <button
+              className="btn btn-info"
+              onClick={() => {
+                this.setState({ bus: bus.id });
+              }}
+            >
+              Add Driver
+            </button>
+          </td>
+        </tr>
+      );
+    });
 
-    const busLists = this.props.busses.map((bus) => (
-      <BusList key={bus.driver_name + bus.id} bus={bus} />
-    ));
-    const childLists = this.props.children.map((child) => (
-      <ChildList key={child.name + child.id} child={child} />
-    ));
+    const childList = this.props.children.map((child) => {
+      return (
+        <tr key={child.id}>
+          <td>{child.id}</td>
+          <td>{child.name}</td>
+          <td>
+            <button
+              className="btn btn-info"
+              onClick={() => {
+                this.setState({ kids: [child.id, ...this.state.kids] });
+              }}
+            >
+              Add Child
+            </button>
+          </td>
+        </tr>
+      );
+    });
+
     if (!this.props.user) return <Redirect to="/" />;
     return (
       <div className="text-center">
@@ -51,7 +98,9 @@ class School extends Component {
             <table className="mt-3 table ">
               <thead>
                 <tr>
+                  <th>Driver ID</th>
                   <th>Name</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>{busLists}</tbody>
@@ -61,17 +110,56 @@ class School extends Component {
           <div className="image ml-5">
             <h3 style={{ color: "black" }}>Children</h3>
 
-            <table className="mt-3 table">
+            <table className="mt-3 table ">
               <thead>
                 <tr>
+                  <th>Student ID</th>
                   <th>Name</th>
-                  <th>Date of Birth</th>
+                  <th></th>
                 </tr>
               </thead>
-              <tbody>{childLists}</tbody>
+              <tbody>{childList}</tbody>
             </table>
           </div>
         </div>
+        <hr />
+        <h3>Create a Route</h3>
+        <div className="container mt-5 text-center">
+          <div className="image">
+            <table>
+              <thead>
+                <tr>
+                  <th>Student ID</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {" "}
+                {this.state.kids.map((kid) => {
+                  return (
+                    <tr key={kid}>
+                      <td>{kid}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="image ml-5">
+            <table>
+              <thead>
+                <tr>
+                  <th>Driver ID</th>
+                </tr>
+              </thead>
+              <tbody>{this.state.bus}</tbody>
+            </table>
+          </div>
+        </div>
+        <button className="btn btn-info">Add Route</button>
+        <hr />
+
         <h2 className="display-3">Routes:</h2>
         {this.props.route.map((route) => (
           <div>
@@ -117,6 +205,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchRoute: (schoolID) => dispatch(fetchRoute(schoolID)),
     fetchBusses: (schoolID) => dispatch(fetchBusses(schoolID)),
     fetchChildren: (schoolID) => dispatch(fetchChildren(schoolID)),
+    addRoute: (route) => dispatch(addRoute(route)),
   };
 };
 
