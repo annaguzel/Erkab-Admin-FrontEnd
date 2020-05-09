@@ -5,7 +5,15 @@ import {
   fetchChildren,
   fetchRoute,
   addRoute,
+  fetchSchools,
 } from "../../store/actions";
+
+import {
+  GoogleMap,
+  Marker,
+  withScriptjs,
+  withGoogleMap,
+} from "react-google-maps";
 
 import { Redirect } from "react-router-dom";
 import Map from "./Maps";
@@ -21,6 +29,7 @@ class School extends Component {
   };
 
   componentDidMount() {
+    this.props.fetchSchools();
     const schoolID = this.props.match.params.schoolID;
 
     this.props.fetchBusses(schoolID);
@@ -89,9 +98,49 @@ class School extends Component {
       );
     });
 
+    const MapWithAMarker = (withScriptjs, withGoogleMap)((props) => {
+      return (
+        <GoogleMap
+          defaultZoom={12}
+          defaultCenter={
+            defaultCenter || {
+              lat: 32.004364,
+              lng: 35.910275,
+            }
+          }
+        >
+          {props.markers.map((marker) => {
+            return (
+              <Marker
+                key={marker.name}
+                position={{ lat: marker.lat, lng: marker.lng }}
+                label={marker.name || marker.driver_name}
+              ></Marker>
+            );
+          })}
+        </GoogleMap>
+      );
+    });
+    const points = this.props.children.concat(
+      this.props.busses,
+      this.props.schools.find((a) => a.id == this.props.match.params.schoolID)
+    );
+
     if (!this.props.user) return <Redirect to="/" />;
     return (
       <div className="text-center">
+        <MapWithAMarker
+          markers={points}
+          googleMapURL={
+            "https://maps.googleapis.com/maps/api/js?key=" +
+            googleMapsApiKey +
+            "&libraries=geometry,drawing,places"
+          }
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `400px` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+        />
+        {console.log(this.props.schools)}
         <div className="container mt-5">
           <div className="image">
             <h3 style={{ color: "black" }}>Busses</h3>
@@ -123,6 +172,7 @@ class School extends Component {
           </div>
         </div>
         <hr />
+
         <h3>Create a Route</h3>
         <div className="container mt-5 text-center">
           <div className="image">
@@ -198,6 +248,7 @@ const mapStateToProps = (state) => {
     children: state.erkab.children,
     route: state.erkab.route,
     user: state.user,
+    schools: state.erkab.schools,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -205,6 +256,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchRoute: (schoolID) => dispatch(fetchRoute(schoolID)),
     fetchBusses: (schoolID) => dispatch(fetchBusses(schoolID)),
     fetchChildren: (schoolID) => dispatch(fetchChildren(schoolID)),
+    fetchSchools: () => dispatch(fetchSchools()),
     addRoute: (route) => dispatch(addRoute(route)),
   };
 };
