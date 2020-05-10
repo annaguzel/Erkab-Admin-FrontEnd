@@ -17,7 +17,6 @@ import {
 
 import { Redirect } from "react-router-dom";
 import Map from "./Maps";
-// import { GoogleMap, Marker } from "react-google-maps";
 
 const googleMapsApiKey = "AIzaSyB1bZjRb_ke0TJH76V-UYzX4tyEZ5d9J4Y";
 
@@ -39,8 +38,15 @@ class School extends Component {
 
   componentDidUpdate(prevProps) {
     const schoolID = this.props.match.params.schoolID;
-
+    // if (prevProps.route !== this.props.route) {
+    //   console.log("changed");
+    //   this.props.fetchSchools();
+    //   this.props.fetchBusses(schoolID);
+    //   this.props.fetchChildren(schoolID);
+    //   this.props.fetchRoute(schoolID);
+    // }
     if (schoolID !== prevProps.match.params.schoolID) {
+      this.props.fetchSchools();
       this.props.fetchBusses(schoolID);
       this.props.fetchChildren(schoolID);
       this.props.fetchRoute(schoolID);
@@ -52,6 +58,10 @@ class School extends Component {
   };
 
   render() {
+    const chosenSchool = this.props.schools.find(
+      (a) => a.id === +this.props.match.params.schoolID
+    );
+
     const {
       loadingElement,
       containerElement,
@@ -102,12 +112,10 @@ class School extends Component {
       return (
         <GoogleMap
           defaultZoom={12}
-          defaultCenter={
-            defaultCenter || {
-              lat: 32.004364,
-              lng: 35.910275,
-            }
-          }
+          defaultCenter={{
+            lat: 32.004364,
+            lng: 35.910275,
+          }}
         >
           {props.markers.map((marker) => {
             return (
@@ -121,16 +129,15 @@ class School extends Component {
         </GoogleMap>
       );
     });
-    const points = this.props.children.concat(
-      this.props.busses,
-      this.props.schools.find((a) => a.id == this.props.match.params.schoolID)
-    );
 
     if (!this.props.user) return <Redirect to="/" />;
     return (
       <div className="text-center">
         <MapWithAMarker
-          markers={points}
+          markers={this.props.children.concat(
+            this.props.busses,
+            this.props.schools
+          )}
           googleMapURL={
             "https://maps.googleapis.com/maps/api/js?key=" +
             googleMapsApiKey +
@@ -174,17 +181,17 @@ class School extends Component {
         <hr />
 
         <h3>Create a Route</h3>
-        <div className="container mt-5 text-center">
+        <div className="container mt-5 text-center ">
           <div className="image">
-            <table>
+            <h4 style={{ color: "black" }}>Student ID</h4>
+            <table className="mx-auto">
               <thead>
                 <tr>
-                  <th>Student ID</th>
+                  <th></th>
                 </tr>
               </thead>
 
               <tbody>
-                {" "}
                 {this.state.kids.map((kid) => {
                   return (
                     <tr key={kid}>
@@ -197,17 +204,22 @@ class School extends Component {
           </div>
 
           <div className="image ml-5">
-            <table>
+            <h4 style={{ color: "black" }}>Driver ID</h4>
+
+            <table className="mx-auto">
               <thead>
                 <tr>
-                  <th>Driver ID</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>{this.state.bus}</tbody>
             </table>
           </div>
         </div>
-        <button className="btn btn-info">Add Route</button>
+        <button className="btn btn-info" onClick={this.handleSubmit}>
+          Create Route
+        </button>
+        <hr />
         <hr />
 
         <h2 className="display-3">Routes:</h2>
