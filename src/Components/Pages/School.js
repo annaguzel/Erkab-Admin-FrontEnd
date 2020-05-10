@@ -134,12 +134,13 @@ class School extends Component {
     return (
       <div className="text-center">
         <MapWithAMarker
-          markers={this.props.children.concat(
-            this.props.busses,
-            this.props.schools
-          )}
+          markers={[
+            ...this.props.children,
+            ...this.props.busses,
+            ...this.props.schools,
+          ]}
           googleMapURL={
-            "https://maps.googleapis.com/maps/api/js?key=" +
+            "https://maps.googleaps.com/maps/api/js?key=" +
             googleMapsApiKey +
             "&libraries=geometry,drawing,places"
           }

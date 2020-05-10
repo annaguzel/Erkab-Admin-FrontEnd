@@ -1,12 +1,8 @@
 import React, { Fragment } from "react";
 
-import {
-  ListItem,
-  ListItemIcon,
-  DashboardIcon,
-  ListItemText,
-} from "../includes";
+import { ListItem, ListItemIcon, ListItemText } from "../includes";
 import SchoolIcon from "@material-ui/icons/School";
+import HomeIcon from "@material-ui/icons/Home";
 import { Link } from "react-router-dom";
 import DirectionsBusIcon from "@material-ui/icons/DirectionsBus";
 export const mainListItems = (
@@ -14,7 +10,7 @@ export const mainListItems = (
     <Link to="/dashboard" style={{ textDecoration: "none" }}>
       <ListItem button>
         <ListItemIcon>
-          <DashboardIcon style={{ fill: "#5bc0de" }} />
+          <HomeIcon style={{ fill: "#008DB3" }} />
         </ListItemIcon>
         <ListItemText secondary="Dashboard" />
       </ListItem>
@@ -22,7 +18,7 @@ export const mainListItems = (
     <Link to="/add/school/" style={{ textDecoration: "none" }}>
       <ListItem button>
         <ListItemIcon>
-          <SchoolIcon style={{ fill: "#5bc0de" }} />
+          <SchoolIcon style={{ fill: "#008DB3" }} />
         </ListItemIcon>
         <ListItemText secondary="Add School" />
       </ListItem>
@@ -30,26 +26,10 @@ export const mainListItems = (
     <Link to="/add/driver" style={{ textDecoration: "none" }}>
       <ListItem button>
         <ListItemIcon>
-          <DirectionsBusIcon style={{ fill: "#5bc0de" }} />
+          <DirectionsBusIcon style={{ fill: "#008DB3" }} />
         </ListItemIcon>
         <ListItemText secondary="Add Driver" />
       </ListItem>
     </Link>
-    {/* <Link to="/raporlar" style={{ textDecoration: "none" }}>
-      <ListItem button>
-        <ListItemIcon>
-          <BarChartIcon />
-        </ListItemIcon>
-        <ListItemText primary="Raporlar" />
-      </ListItem>
-    </Link>
-    <Link to="/entegrasyonlar" style={{ textDecoration: "none" }}>
-      <ListItem button>
-        <ListItemIcon>
-          <LayersIcon />
-        </ListItemIcon>
-        <ListItemText primary="Entegrasyonlar" />
-      </ListItem>
-    </Link> */}
   </Fragment>
 );
